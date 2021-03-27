@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link href="/static/css/bar.css" rel="stylesheet">
+    <title>Ben web</title>
+  </head>
+  <body>
+    {% include 'test/test.html' %}
+    <div class="container">
+      {% include 'includes/_messages.html' %}
+      {% block body %}{% endblock %}
+    </div>
+  </body>
+</html>

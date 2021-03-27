@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<style>
+    #link {
+    		text-decoration:none;
+    		color:#5e5e5e;
+    		border:0 none;
+			}
+
+	li{
+		list-style: none;
+	}
+
+	#image {
+	    margin-left: auto; 
+	    margin-right:auto; 
+	    display:block;
+	}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:1%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+
+<h1 style="display:inline;">Your Post</h1><div style="display:inline;float:right;"><h3 style="display:inline;"><a id="link" href="/edit/{{work.id}}">Edit</a></h3></div><br><br>
+
+  <h1 style="display:inline;">Title:{{work.Wname}}</h1>
+
+  <br><br><br><br>
+  <div>
+	<img id="image" src="{{work.iname}}"
+		style="height:auto;width:auto;max-height:512px;max-width:512px;overflow:hidden;"
+		onclick="window.open('{{work.iname}}', '_blank');">
+	<small><br><br>created on {{work.UploadDate}}</small>
+  </div><hr>
+     <ul>
+   		<h3>Description:{{work.Description}}</h3>
+   	</ul><hr>
+
+  {% if session.logged_in %}
+  	<div>
+		{% from "includes/_formhelpers.html" import render_field %}
+		<form action="" method=post enctype=multipart/form-data>
+		    <div class="form-group">
+		      {{render_field(form.content, class_="form-control",rows="2")}}
+		    </div>
+		    <div align="right">
+		    	<p><input type="submit" class="btn btn-primary" value="submit"></p>
+		    </div>
+		</form>
+	</div>
+  {% else %}
+  <h3>Please login to leave a comment</h3><hr>
+  {% endif %}
+
+	{% if comment%}
+      <h3>Comment</h3>
+
+	  <div class="panel panel-default" style="background-color:rgba(255,255,255,.8);color:#5e5e5e;">
+		<ul>
+		{% for data in comment %}
+
+			{% if session.Username == data.postuser %}
+			<div style="float:right;padding:2%;">
+			<form action="" method=post id="delete">
+				{{form.pid(value=data.postuser)}}
+				{{form.commentid(value=data.commentid)}}
+			</form>
+				<button class="btn btn-primary" onclick="del()">delete</button>
+			</div>
+			{% endif %}
+
+			<li style="padding-top:20px;">
+				<h3><a id="link" href="/aprofile/{{data.postuser}}">
+					<img src="{{data.usericon}}" style="height:64px;width:64px;border-radius:50%;">{{data.postuser}}</a>
+				</h3>
+				<h3>{{data.content}}</h3>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+
+	{% endif %}
+
+<script>
+
+function del(){
+
+	if (confirm(" You sure to delete the comment? ") ) 
+		{document.getElementById("delete").submit();}
+}
+
+</script>
+
+{% endblock %}

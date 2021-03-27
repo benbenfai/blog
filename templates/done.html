@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    #link {padding:5px 15px;
+    		text-decoration:none;
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			}
+	#link:hover{}
+	#link:active{}
+	#link:visited{}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+<h1>Done!</h1>
+<p><h3>icon: </h3><img src="{{ url_l }}"></p>
+<p><a id="link" href="/profile" class="btn btn-primary">Home</a></p>
+{% endblock %}

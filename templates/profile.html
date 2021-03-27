@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    #link {padding:5px 15px;
+    		text-decoration:none;
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px; 
+		    position: absolute;
+		    left: 50%;
+		    margin-right: -50%;
+			}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+
+	<table>
+  	<tr><td>
+  		<h1>Profile</h1>
+  	</td>
+  	<tr>
+  		<td>
+  			<h2>User information</h2><br>
+			<div>
+				<a href="/icon"><img src="{{session.icon}}" style="height:auto;width:auto;max-height:256px;max-width:256px;"><br><br></a>
+			</div>
+		</td>
+	  	<td style="padding-left:80px;">
+	  		<h3>Username: {{session.Username}}</h3>
+	  		<h3>Email: {{session.email}}</h3>
+	  		<h3>Description:</h3>
+	  		<h4>{{session.description}}</h4>
+		</td>
+  	</tr>
+  	<tr>
+  		<td>
+  		</td>
+  		<td>
+		<a id="link" href="/change" class="btn btn-primary">Click to change user information</a>
+		</td>
+	</tr>
+  </table>
+{% endblock %}

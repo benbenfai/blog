@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    #link {padding:5px 15px;
+    		text-decoration:none;
+    		background-color: #1a75ff; 
+    		color: white;
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px; 
+		    position: absolute;
+		    left: 50%;
+		    margin-right: -50%;
+			}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+
+	<table>
+  	<tr><td>
+  		<h1>User Profile</h1>
+  	</td>
+  	<tr>
+  		<td>
+			<div>
+			    <img src="{{data.icon}}" style="height:256;width:256;">
+			</div>
+		</td>
+	  	<td style="padding-left:80px;">
+	  		<h3>Username: {{data.Username}}</h3>
+	  		<h3>Email: {{data.Email}}</h3>
+	  		<h3>Description:</h3>
+	  		<h4>{{data.Description}}</h4>
+		</td>
+  	</tr>
+  </table>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    input {
+    		background-color: #f0f0f5; 
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px; 
+	}
+	
+	li{
+		list-style: none;
+	}
+
+    #link {
+		text-decoration:none;
+    	color:#5e5e5e;
+    	border:0 none;
+	}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+  
+  <h1 style="display:inline;">Users</h1>
+
+	<div style="float:right;display:inline;">
+		{% from "includes/_formhelpers.html" import render_field %}
+		<input type="text" id="userinput" onkeyup="myFunction()" placeholder="Search for username">
+	</div>
+		<br><br>
+	<div>
+		<ul id="user">
+		{% for data in wdata %}
+			<li class="panel panel-default" style="padding:2%">
+				<img src="{{data.icon}}" style="height:64px;width:64px;padding:2%;border-radius:50%;">
+				<h4 style="display:inline;">username:{{data.Username}}</h4>
+				<a id="link" style="float:right;margin:2.5%;" href="/aprofile2/{{data.Username}}">Detail</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+
+</div>
+
+<script>
+
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+	    input = document.getElementById("userinput");
+	    filter = input.value.toUpperCase();
+	    ul = document.getElementById("user");
+	    li = ul.getElementsByTagName("li");
+	    for (i = 0; i < li.length; i++) {
+	        h4 = li[i].getElementsByTagName("h4")[0];
+	        txtValue = h4.textContent || h4.innerText;
+	        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	            li[i].style.display = "";
+	        } else {
+	            li[i].style.display = "none";
+        }
+    }
+}
+
+function del(){
+
+	if (confirm(" You sure to delete this user? ") ) 
+		{document.getElementById("delete").submit();}
+}
+
+</script>
+
+{% endblock %}

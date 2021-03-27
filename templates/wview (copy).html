@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    input {padding:5px 15px;
+    		background-color: #f0f0f5; 
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px; }
+	li{
+		style="list-style: none;
+	}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+  <h1>Works</h1>
+	<div>
+		{% for work in wdata %}
+		<a href="static/upload/{{work.iname}}"><img src="work.iname" style="height:auto;width:auto:max-height:256px;max-width:256px;overflow: hidden;padding-left:15%;"></a>
+		{% endfor %}
+	</div>
+
+</div>
+
+{% endblock %}

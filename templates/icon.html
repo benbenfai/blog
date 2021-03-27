@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    input {padding:5px 15px;
+    		background-color: #f0f0f5; 
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px; }
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+  <h1>Icon</h1>
+	<div>
+		<h3>change your icon</h3>
+	</div>
+		<br>
+	<div>
+		{% from "includes/_formhelpers.html" import render_field %}
+		<form action="" method=post enctype=multipart/form-data>
+			   <input type=file name=file><br/>
+			   <input type=submit value=Upload>
+		</form>
+	</div>
+</div>
+{% endblock %}

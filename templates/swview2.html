@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    input {
+    		background-color: #f0f0f5; 
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px; }
+	li{
+		list-style: none;
+	}
+
+    #link {
+    		text-decoration:none;
+    		color:#5e5e5e;
+    		border:0 none;
+			}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+  
+  <h1 style="display:inline;">Title</h1>
+
+	<div style="float:right;display:inline;">
+		{% from "includes/_formhelpers.html" import render_field %}
+		<input type="text" id="userinput" onkeyup="myFunction()" placeholder="Search for Post">
+	</div>
+		<br><br>
+	<div>
+		<ul id="user">
+		{% for data in wdata %}
+		<li class="panel panel-default"><img src="{{data.iname}}" style="height:auto;width:auto;max-height:128px;max-width:128px;padding:2%;">
+			<h4 style="display:inline;">{{data.Wname}}</h4>
+			<a id="link" style="float:right;margin:2.5%;" href="/work2/{{data.id}}">Detail</a>
+		</li>
+		{% endfor %}
+		</ul>
+	</div>
+
+</div>
+
+<script>
+
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+	    input = document.getElementById("userinput");
+	    filter = input.value.toUpperCase();
+	    ul = document.getElementById("user");
+	    li = ul.getElementsByTagName("li");
+	    for (i = 0; i < li.length; i++) {
+	        h4 = li[i].getElementsByTagName("h4")[0];
+	        txtValue = h4.textContent || h4.innerText;
+	        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	            li[i].style.display = "";
+	        } else {
+	            li[i].style.display = "none";
+        }
+    }
+}
+
+function del(){
+
+	if (confirm(" You sure to delete this Post? ") ) 
+		{document.getElementById("delete").submit();}
+}
+
+</script>
+
+{% endblock %}

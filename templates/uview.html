@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+    input {padding:5px 15px;
+    		background-color: #f0f0f5; 
+    		border:0 none;
+			cursor:pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px; }
+	li{
+		list-style: none;
+	}
+
+	#link{
+		position: relative;
+		top: auto;
+		left: auto;
+		transform: translate(-50%, -50%);
+		padding-left: 5%;
+		padding-right: auto;
+	}
+
+	div img{
+		height: 100%;
+		width: 100%;
+		object-fit:cover;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	td{
+		padding: 8px;
+		text-align: left;
+		vertical-align: top;
+	}
+
+</style>
+
+<div class="panel panel-default" style="margin-top:2%;background-color:rgba(255,255,255,.8);color:#5e5e5e;padding:50px;">
+	<h1>Your Post</h1>
+
+	<div>
+		<ul id="user">
+			{% for data in wdata %}
+			<li class="panel panel-default" style="padding:2%">
+				<table>
+					<tr>
+						<td>
+							<div>
+								<a id="link" href="/aprofile/{{data.Author}}">
+									<img src="{{data.icon}}" style="height:64px;width:64px;padding:2%;border-radius:50%;">
+									<h3 style="display:inline;">{{data.Author}}</h3>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:30%">
+							<div style="height:256px;width:256px;">
+								<a id="link" href="/work/{{data.id}}">
+									<img src="{{data.iname}}">
+								</a>
+							</div>
+						</td>
+						<td style="width:70%">
+							<h3 style="display:inline;">{{data.Wname}}</h3>
+							<br>
+							<h4>{{data.Description}}</h4>
+						</td>
+					</tr>
+				</table>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+</div>
+
+<script>
+	
+	function del(){
+	
+		if (confirm(" You sure to delete this Post? ") ) 
+			{document.getElementById("delete").submit();}
+	}
+	
+	</script>
+
+{% endblock %}
