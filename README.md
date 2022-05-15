@@ -10,6 +10,8 @@ Set up the database  host information, encrypt key and imgur API then able to st
 
 <b>notice:</b> the imgur API have been used. User need an imgur account to get your own API key.
 
+*confuse code base and no maintenance for couple years
+
 
 link: https://dulldullmc.pythonanywhere.com/
 
